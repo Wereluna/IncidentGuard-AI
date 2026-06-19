@@ -1,29 +1,25 @@
-# IncidentGuard AI
+# 🦇 IncidentGuard AI
 
-IncidentGuard AI is an intelligent log analysis system that helps identify errors and warnings from uploaded log files.
+AI-powered incident monitoring and threat analysis dashboard.
 
 ## Features
 
-- Log Upload
-- Error Detection
-- Warning Detection
-- Incident Analysis
-- Web-Based Interface
+- Log File Upload
+- Error & Warning Detection
+- Risk Scoring Engine
+- Severity Classification
+- AI Recommendations
+- Cyber Threat Dashboard
 
 ## Tech Stack
 
 - Python
 - Flask
-- HTML
+- HTML/CSS
 - GitHub
 
-## Future Scope
+## Installation
 
-- AI Root Cause Analysis
-- Email Notifications
-- Real-Time Monitoring
-- Dashboard Analytics
-
-## Author
-
-Nimisha Yadav
+```bash
+pip install -r requirements.txt
+python app.py
