@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IncidentGuard AI</title>
+</head>
+<body>
+    <h1>IncidentGuard AI</h1>
+    <h3>Upload Log File</h3>
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="logfile">
+        <button type="submit">Analyze</button>
+    </form>
+
+    <hr>
+
+    {% if result %}
+    <h2>Analysis Result</h2>
+    <p>{{ result }}</p>
+    {% endif %}
+</body>
+</html>
