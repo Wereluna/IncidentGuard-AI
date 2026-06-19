@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from analyzer.log_analyzer import analyze_log
+#from analyzer.log_analyzer import analyze_log
 
 app = Flask(__name__)
 
