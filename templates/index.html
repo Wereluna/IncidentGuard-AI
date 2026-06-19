@@ -2,21 +2,64 @@
 <html>
 <head>
     <title>IncidentGuard AI</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f6f9;
+            padding:40px;
+        }
+
+        .container{
+            max-width:800px;
+            margin:auto;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1{
+            color:#2c3e50;
+        }
+
+        button{
+            background:#007bff;
+            color:white;
+            border:none;
+            padding:10px 20px;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        .result{
+            margin-top:20px;
+            padding:15px;
+            background:#eef;
+            border-radius:8px;
+        }
+    </style>
 </head>
 <body>
-    <h1>IncidentGuard AI</h1>
+
+<div class="container">
+    <h1>🛡 IncidentGuard AI</h1>
+
     <h3>Upload Log File</h3>
 
     <form method="POST" enctype="multipart/form-data">
-        <input type="file" name="logfile">
+        <input type="file" name="logfile" required>
         <button type="submit">Analyze</button>
     </form>
 
-    <hr>
-
     {% if result %}
-    <h2>Analysis Result</h2>
-    <p>{{ result }}</p>
+    <div class="result">
+        <h2>Analysis Result</h2>
+        <p><b>Errors:</b> {{ result.errors }}</p>
+        <p><b>Warnings:</b> {{ result.warnings }}</p>
+        <p><b>Severity:</b> {{ result.severity }}</p>
+    </div>
     {% endif %}
+</div>
+
 </body>
 </html>
