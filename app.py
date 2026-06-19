@@ -3,25 +3,46 @@ from analyzer.log_analyzer import analyze_log
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET", "POST"])
+@app.route('/', methods=['GET', 'POST'])
 def home():
 
-    result = None
+    if request.method == 'POST':
 
-    if request.method == "POST":
-
-        file = request.files["logfile"]
+        file = request.files['logfile']
 
         if file:
-            content = file.read().decode("utf-8")
 
-            result = analyze_log(content)
+            content = file.read().decode('utf-8')
+
+            errors = content.count("ERROR")
+            warnings = content.count("WARNING")
+
+            score = errors * 10 + warnings * 5
+
+            if score < 20:
+                severity = "LOW"
+            elif score < 50:
+                severity = "MEDIUM"
+            elif score < 80:
+                severity = "HIGH"
+            else:
+                severity = "CRITICAL"
+
+            return render_template(
+                "index.html",
+                errors=errors,
+                warnings=warnings,
+                score=score,
+                severity=severity
+            )
 
     return render_template(
         "index.html",
-        result=result
+        errors=0,
+        warnings=0,
+        score=0,
+        severity="LOW"
     )
-
 import os
 
 if __name__ == "__main__":
