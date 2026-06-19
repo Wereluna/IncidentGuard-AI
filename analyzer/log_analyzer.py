@@ -1,19 +1,20 @@
 def analyze_log(content):
-
     errors = content.count("ERROR")
     warnings = content.count("WARNING")
 
-    if errors >= 10:
-        severity = "HIGH"
-    elif errors >= 5:
-        severity = "MEDIUM"
-    else:
+    score = errors * 5 + warnings * 2
+
+    if score < 10:
         severity = "LOW"
+    elif score < 20:
+        severity = "MEDIUM"
+    elif score < 40:
+        severity = "HIGH"
+    else:
+        severity = "CRITICAL"
 
-    return f"""
-Errors Found: {errors}
-
-Warnings Found: {warnings}
-
-Severity Level: {severity}
-"""
+    return {
+        "errors": errors,
+        "warnings": warnings,
+        "severity": severity
+    }
