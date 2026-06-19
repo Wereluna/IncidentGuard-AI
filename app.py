@@ -5,16 +5,16 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    result = None
+    analysis = None
 
     if request.method == "POST":
         file = request.files["logfile"]
 
         if file:
             content = file.read().decode("utf-8")
-            result = analyze_log(content)
+            analysis = analyze_log(content)
 
-    return render_template("index.html", result=result)
+    return render_template("index.html", result=analysis)
 
 if __name__ == "__main__":
     app.run(debug=True)
