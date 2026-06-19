@@ -27,4 +27,4 @@ def analyze_log(content):
         "score": score,
         "severity": severity,
         "recommendation": recommendation
-    }
+    } 
