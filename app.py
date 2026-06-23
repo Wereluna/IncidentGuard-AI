@@ -7,6 +7,7 @@ from flask import Flask, render_template, request, jsonify
 import google.generativeai as genai
 
 app = Flask(__name__)
+app.jinja_env.globals.update(enumerate=enumerate)
 
 # ── Gemini setup ──────────────────────────────────────────────────────────────
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
