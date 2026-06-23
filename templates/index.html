@@ -10,109 +10,117 @@ body{
   min-height:100vh;display:flex;justify-content:center;
   align-items:flex-start;overflow:auto;padding:30px 0;
 }
-.overlay{position:fixed;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1;}
+.overlay{position:fixed;width:100%;height:100%;background:rgba(0,0,0,0.88);z-index:1;}
 .card{
-  position:relative;z-index:2;width:820px;background:#111;
+  position:relative;z-index:2;width:860px;background:#0d0d0d;
   padding:30px;border-radius:25px;border:2px solid #ff003c;
-  box-shadow:0 0 40px #ff003c;text-align:center;color:white;
+  box-shadow:0 0 50px rgba(255,0,60,0.4);text-align:center;color:white;
   margin:20px;
 }
-.status{color:#ff4d6d;font-weight:bold;margin-bottom:15px;font-size:18px;}
-.logo{font-size:44px;font-weight:bold;color:#ff003c;text-shadow:0 0 20px #ff003c;animation:pulse 2s infinite;}
-.subtitle{margin-top:10px;color:#d3d3d3;font-size:15px;margin-bottom:5px;}
-.agent-badge{
-  display:inline-block;background:#1a0a2e;border:1px solid #7f77dd;
-  color:#afa9ec;font-size:12px;padding:4px 14px;border-radius:20px;margin-top:8px;
+
+/* header */
+.status{color:#ff4d6d;font-weight:bold;margin-bottom:12px;font-size:16px;}
+.logo{font-size:40px;font-weight:bold;color:#ff003c;text-shadow:0 0 20px #ff003c;animation:pulse 2s infinite;}
+.subtitle{margin-top:8px;color:#d3d3d3;font-size:14px;}
+.badges{display:flex;justify-content:center;gap:8px;margin-top:10px;flex-wrap:wrap;}
+.badge{font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid;}
+.badge-purple{background:#0d0d1f;border-color:#7f77dd;color:#afa9ec;}
+.badge-teal{background:#0d1f0d;border-color:#1d9e75;color:#5dcaa5;}
+.badge-red{background:#1f0d0d;border-color:#ff003c;color:#ff6b81;}
+
+/* stats dashboard */
+.dashboard{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0;}
+.dash-stat{background:#1a1a1a;border:1px solid #333;border-radius:12px;padding:12px;}
+.dash-stat .label{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:0.05em;}
+.dash-stat .value{font-size:26px;font-weight:bold;margin-top:6px;}
+
+/* monitor controls */
+.monitor-panel{
+  background:#0d0d1f;border:1px solid #7f77dd;border-radius:15px;
+  padding:16px 20px;margin-bottom:20px;text-align:left;
 }
-form{margin-top:25px;}
-input[type=file]{color:white;margin:10px;}
-button{
+.monitor-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.monitor-title{color:#afa9ec;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;}
+.monitor-info{font-size:12px;color:#666;}
+.monitor-btns{display:flex;gap:8px;}
+.btn-start{background:#0f6e56;color:#9fe1cb;border:1px solid #1d9e75;padding:8px 18px;border-radius:8px;font-size:13px;cursor:pointer;font-weight:600;}
+.btn-start:hover{background:#1d9e75;}
+.btn-stop{background:#3d0000;color:#ff8fa3;border:1px solid #ff003c;padding:8px 18px;border-radius:8px;font-size:13px;cursor:pointer;font-weight:600;}
+.btn-stop:hover{background:#ff003c;color:white;}
+.pulse-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle;}
+.pulse-dot.active{background:#00c853;animation:blink 1s infinite;}
+.pulse-dot.inactive{background:#555;}
+
+/* upload */
+form{margin:16px 0;}
+input[type=file]{color:white;margin:8px;}
+.btn-analyze{
   background:#ff4d6d;color:white;border:none;
-  padding:12px 25px;border-radius:10px;font-size:16px;
+  padding:12px 28px;border-radius:10px;font-size:15px;
   cursor:pointer;font-weight:bold;margin-top:8px;
 }
-button:hover{background:#ff003c;}
-.error-msg{
-  background:#2a0000;border:1px solid #ff003c;
-  color:#ff8fa3;padding:12px;border-radius:10px;margin-top:16px;
-}
+.btn-analyze:hover{background:#ff003c;}
+.error-msg{background:#2a0000;border:1px solid #ff003c;color:#ff8fa3;padding:12px;border-radius:10px;margin-top:12px;}
 
 /* report */
-.report{margin-top:30px;background:#1b1b1b;padding:25px;border-radius:20px;text-align:left;}
-.report-title{color:#ff6b81;font-size:20px;font-weight:bold;text-align:center;margin-bottom:20px;}
+.report{margin-top:24px;background:#141414;padding:24px;border-radius:20px;text-align:left;}
+.report-title{color:#ff6b81;font-size:18px;font-weight:bold;text-align:center;margin-bottom:18px;}
 
-.stats{display:flex;justify-content:space-around;gap:12px;margin-bottom:20px;}
-.stat{flex:1;background:#222;padding:15px;border-radius:15px;border:1px solid #ff003c;text-align:center;}
-.stat h3{color:#ff8fa3;font-size:13px;text-transform:uppercase;letter-spacing:0.05em;}
-.stat p{font-size:28px;font-weight:bold;margin-top:8px;}
+.stats-row{display:flex;gap:10px;margin-bottom:18px;}
+.stat{flex:1;background:#1a1a1a;padding:14px;border-radius:12px;border:1px solid #ff003c;text-align:center;}
+.stat h3{color:#ff8fa3;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;}
+.stat p{font-size:26px;font-weight:bold;margin-top:6px;}
 
-.threat-label{color:#aaa;font-size:13px;text-align:center;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em;}
-.meter{width:100%;height:20px;background:#333;border-radius:20px;overflow:hidden;margin-bottom:12px;}
-.fill{height:100%;background:linear-gradient(90deg,green,yellow,orange,red);transition:width 0.6s;}
-.severity-badge{
-  display:block;width:fit-content;margin:0 auto 8px;
-  padding:10px 28px;border-radius:25px;font-weight:bold;font-size:16px;
-}
+.threat-label{color:#888;font-size:12px;text-align:center;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em;}
+.meter{width:100%;height:16px;background:#222;border-radius:20px;overflow:hidden;margin-bottom:10px;}
+.fill{height:100%;background:linear-gradient(90deg,#00c853,#ffeb3b,#ff9800,#ff1744);}
+.sev-badge{display:block;width:fit-content;margin:0 auto 12px;padding:8px 24px;border-radius:25px;font-weight:bold;font-size:15px;}
 .low{background:#00c853;color:#fff;}
 .medium{background:#ff9800;color:#fff;}
 .high{background:#ff5722;color:#fff;}
 .critical{background:#ff0000;color:#fff;animation:blink 1s infinite;}
 
-/* root cause */
-.section{
-  margin-top:20px;background:#0d0d1f;padding:20px;
-  border-radius:15px;border:1px solid #7f77dd;
+/* escalation alert */
+.escalation-alert{
+  background:#1f0000;border:2px solid #ff0000;border-radius:12px;
+  padding:14px 18px;margin-bottom:14px;
+  display:flex;align-items:flex-start;gap:10px;
 }
-.section-title{
-  color:#afa9ec;font-size:13px;font-weight:600;
-  text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;
-}
+.esc-icon{font-size:20px;flex-shrink:0;}
+.esc-text{font-size:13px;color:#ff8fa3;line-height:1.6;}
+.esc-text strong{color:#ff4444;display:block;margin-bottom:4px;}
+
+/* sections */
+.section{margin-top:14px;background:#0d0d1f;padding:18px;border-radius:14px;border:1px solid #7f77dd;}
+.section-title{color:#afa9ec;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;}
 .section p{color:#ccc;line-height:1.75;font-size:14px;}
 
-/* recommendations */
-.rec-box{
-  margin-top:20px;background:#0d1f0d;padding:20px;
-  border-radius:15px;border:1px solid #1d9e75;
-}
-.rec-title{
-  color:#5dcaa5;font-size:13px;font-weight:600;
-  text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;
-}
+.rec-box{margin-top:14px;background:#0d1f0d;padding:18px;border-radius:14px;border:1px solid #1d9e75;}
+.rec-title{color:#5dcaa5;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;}
 .rec-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;}
-.rec-num{
-  background:#0f6e56;color:#9fe1cb;width:24px;height:24px;
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:12px;font-weight:bold;flex-shrink:0;margin-top:2px;
-}
-.rec-text{color:#ccc;font-size:14px;line-height:1.6;}
+.rec-num{background:#0f6e56;color:#9fe1cb;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:bold;flex-shrink:0;margin-top:2px;}
+.rec-text{color:#ccc;font-size:13px;line-height:1.6;}
 
 /* history */
-.history-box{
-  margin-top:20px;background:#1a1a1a;padding:20px;
-  border-radius:15px;border:1px solid #444;
-}
-.history-title{
-  color:#888;font-size:13px;font-weight:600;
-  text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;
-}
-.history-row{
-  display:flex;align-items:center;gap:10px;
-  padding:8px 0;border-bottom:1px solid #2a2a2a;font-size:13px;
-}
+.history-box{margin-top:14px;background:#111;padding:18px;border-radius:14px;border:1px solid #333;}
+.history-title{color:#777;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;}
+.history-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #1f1f1f;font-size:12px;}
 .history-row:last-child{border-bottom:none;}
-.h-time{color:#555;min-width:120px;}
-.h-sev{padding:2px 10px;border-radius:20px;font-size:11px;font-weight:bold;min-width:70px;text-align:center;}
+.h-time{color:#444;min-width:115px;}
+.h-sev{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:bold;min-width:64px;text-align:center;}
 .h-sev.low{background:#003d19;color:#00c853;}
 .h-sev.medium{background:#3d2600;color:#ff9800;}
 .h-sev.high{background:#3d1100;color:#ff5722;}
 .h-sev.critical{background:#3d0000;color:#ff4444;}
-.h-score{color:#555;min-width:60px;text-align:right;}
-.h-root{color:#777;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;}
+.h-root{color:#666;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.h-score{color:#444;min-width:55px;text-align:right;}
+.h-auto{font-size:10px;padding:1px 6px;border-radius:10px;background:#0d1f0d;color:#5dcaa5;border:1px solid #1d9e75;flex-shrink:0;}
+.h-esc{font-size:10px;padding:1px 6px;border-radius:10px;background:#1f0000;color:#ff6b81;border:1px solid #ff003c;flex-shrink:0;}
 
-.footer{margin-top:20px;color:#555;font-size:12px;text-align:center;line-height:1.8;}
+.footer{margin-top:16px;color:#444;font-size:11px;text-align:center;line-height:2;}
 
-@keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.04);}100%{transform:scale(1);}}
-@keyframes blink{0%{opacity:1;}50%{opacity:0.4;}100%{opacity:1;}}
+@keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.03);}100%{transform:scale(1);}}
+@keyframes blink{0%{opacity:1;}50%{opacity:0.3;}100%{opacity:1;}}
 </style>
 </head>
 <body>
@@ -122,46 +130,106 @@ button:hover{background:#ff003c;}
   <div class="status">🔴 SYSTEM STATUS : MONITORING ACTIVE</div>
   <div class="logo">🦇 IncidentGuard AI</div>
   <div class="subtitle">Cyber Threat Detection &bull; Incident Intelligence &bull; AI Monitoring</div>
-  <div class="agent-badge">⚡ Powered by Gemini Agent v2.0 &bull; Memory-enabled</div>
+  <div class="badges">
+    <span class="badge badge-purple">⚡ Gemini Agent v2.0</span>
+    <span class="badge badge-teal">🧠 Memory-enabled</span>
+    <span class="badge badge-red">🔁 Multi-step Reasoning</span>
+    <span class="badge badge-purple">📋 Auto-escalation</span>
+  </div>
 
+  <!-- Stats dashboard -->
+  <div class="dashboard">
+    <div class="dash-stat">
+      <div class="label">Total Incidents</div>
+      <div class="value" style="color:#ff8fa3;">{{ stats.total }}</div>
+    </div>
+    <div class="dash-stat">
+      <div class="label">Critical</div>
+      <div class="value" style="color:#ff4444;">{{ stats.critical }}</div>
+    </div>
+    <div class="dash-stat">
+      <div class="label">Escalated</div>
+      <div class="value" style="color:#ff9800;">{{ stats.escalated }}</div>
+    </div>
+    <div class="dash-stat">
+      <div class="label">Auto-detected</div>
+      <div class="value" style="color:#5dcaa5;">{{ stats.auto_detected }}</div>
+    </div>
+  </div>
+
+  <!-- Autonomous monitor panel -->
+  <div class="monitor-panel">
+    <div class="monitor-header">
+      <div class="monitor-title">
+        <span class="pulse-dot {% if monitor_running %}active{% else %}inactive{% endif %}"></span>
+        Autonomous Monitor
+      </div>
+      <div class="monitor-info">
+        {% if monitor_running %}
+          Running &bull; Last scan: {{ monitor_status.last_run or 'pending...' }}
+          &bull; {{ monitor_status.incidents_detected }} detected
+        {% else %}
+          Stopped &bull; Start to enable 24/7 autonomous threat detection
+        {% endif %}
+      </div>
+    </div>
+    <div class="monitor-btns">
+      {% if not monitor_running %}
+      <form action="/monitor/start" method="POST" style="display:inline;">
+        <button class="btn-start" type="submit">▶ Start Autonomous Monitor</button>
+      </form>
+      {% else %}
+      <form action="/monitor/stop" method="POST" style="display:inline;">
+        <button class="btn-stop" type="submit">⏹ Stop Monitor</button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Manual upload -->
   <form method="POST" enctype="multipart/form-data">
     <input type="file" name="logfile" accept=".log,.txt">
     <br>
-    <button type="submit">🔍 Analyze Incident</button>
+    <button class="btn-analyze" type="submit">🔍 Analyze Incident</button>
   </form>
 
   {% if error_msg %}
   <div class="error-msg">⚠ {{ error_msg }}</div>
   {% endif %}
 
+  <!-- Result -->
   {% if result %}
   <div class="report">
     <div class="report-title">🚨 INCIDENT REPORT</div>
 
-    <div class="stats">
-      <div class="stat">
-        <h3>Critical</h3>
-        <p style="color:#ff4444;">{{ result.critical_count }}</p>
+    <!-- Escalation alert -->
+    {% if result.escalated %}
+    <div class="escalation-alert">
+      <div class="esc-icon">🚨</div>
+      <div class="esc-text">
+        <strong>ESCALATION TRIGGERED</strong>
+        {{ result.escalation_reason }}
       </div>
-      <div class="stat">
-        <h3>Errors</h3>
-        <p style="color:#ff8fa3;">{{ result.errors }}</p>
-      </div>
-      <div class="stat">
-        <h3>Warnings</h3>
-        <p style="color:#ffa500;">{{ result.warnings }}</p>
-      </div>
-      <div class="stat">
-        <h3>Score</h3>
-        <p>{{ result.score }}/100</p>
-      </div>
+    </div>
+    {% endif %}
+
+    <div class="stats-row">
+      <div class="stat"><h3>Critical</h3><p style="color:#ff4444;">{{ result.critical_count }}</p></div>
+      <div class="stat"><h3>Errors</h3><p style="color:#ff8fa3;">{{ result.errors }}</p></div>
+      <div class="stat"><h3>Warnings</h3><p style="color:#ffa500;">{{ result.warnings }}</p></div>
+      <div class="stat"><h3>Score</h3><p>{{ result.score }}/100</p></div>
     </div>
 
     <div class="threat-label">Threat Level</div>
-    <div class="meter">
-      <div class="fill" style="width:{{ result.score }}%;"></div>
-    </div>
-    <div class="severity-badge {{ result.severity|lower }}">{{ result.severity }}</div>
+    <div class="meter"><div class="fill" style="width:{{ result.score }}%;"></div></div>
+    <div class="sev-badge {{ result.severity|lower }}">{{ result.severity }}</div>
+
+    {% if result.source_ip != 'unknown' %}
+    <p style="text-align:center;color:#666;font-size:12px;margin-bottom:12px;">
+      Source IP: <span style="color:#ff8fa3;">{{ result.source_ip }}</span>
+      &bull; {{ result.ip_count + 1 }} incident(s) from this IP
+    </p>
+    {% endif %}
 
     <div class="section">
       <div class="section-title">🧠 AI Root Cause Analysis</div>
@@ -180,34 +248,39 @@ button:hover{background:#ff003c;}
 
     {% if result.history %}
     <div class="history-box">
-      <div class="history-title">📋 Incident Memory — Last {{ result.history|length }} Incidents</div>
+      <div class="history-title">📋 Incident Memory — Last {{ result.history|length }} incidents</div>
       {% for h in result.history %}
       <div class="history-row">
         <span class="h-time">{{ h.timestamp }}</span>
         <span class="h-sev {{ h.severity|lower }}">{{ h.severity }}</span>
         <span class="h-root">{{ h.root_cause }}</span>
         <span class="h-score">{{ h.score }}/100</span>
+        {% if h.auto_detected %}<span class="h-auto">auto</span>{% endif %}
+        {% if h.escalated %}<span class="h-esc">escalated</span>{% endif %}
       </div>
       {% endfor %}
     </div>
     {% endif %}
 
     <div class="footer">
-      🛡 IncidentGuard AI &bull; Gemini 1.5 Flash &bull; Multi-step Agent &bull; SQLite Memory Store
+      🛡 IncidentGuard AI &bull; Gemini 1.5 Flash &bull; 5-Tool Agent Pipeline &bull; SQLite Memory &bull; Auto-escalation
     </div>
   </div>
   {% endif %}
 
+  <!-- History on home page -->
   {% if not result and history %}
-  <div class="report" style="margin-top:24px;">
+  <div class="report" style="margin-top:20px;">
     <div class="history-box" style="margin-top:0;">
-      <div class="history-title">📋 Previous Incidents in Memory</div>
+      <div class="history-title">📋 Incident Memory</div>
       {% for h in history %}
       <div class="history-row">
         <span class="h-time">{{ h.timestamp }}</span>
         <span class="h-sev {{ h.severity|lower }}">{{ h.severity }}</span>
         <span class="h-root">{{ h.root_cause }}</span>
         <span class="h-score">{{ h.score }}/100</span>
+        {% if h.auto_detected %}<span class="h-auto">auto</span>{% endif %}
+        {% if h.escalated %}<span class="h-esc">escalated</span>{% endif %}
       </div>
       {% endfor %}
     </div>
@@ -217,4 +290,3 @@ button:hover{background:#ff003c;}
 </div>
 </body>
 </html>
-
