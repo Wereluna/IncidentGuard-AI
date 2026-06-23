@@ -145,8 +145,11 @@ def tool_root_cause(parsed: dict, history: list) -> str:
 
     try:
         response = client.models.generate_content(
+    model="gemini-2.5-flash",
+    contents=[prompt]
+)
             ...
-        )
+        
         return response.text.strip()
 
     except Exception as e:
@@ -172,7 +175,7 @@ Format:
 1. [action]
 2. [action]"""
     try:
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(prompt)
         lines = response.text.strip().splitlines()
         recs = []
         for line in lines:
@@ -210,7 +213,7 @@ Stats: {parsed['errors']} errors, {parsed['warnings']} warnings, score {parsed['
 
 Reply with ONLY one word — LOW, MEDIUM, HIGH, or CRITICAL:"""
     try:
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(prompt)
         verdict = response.text.strip().upper()
         return verdict if verdict in ("LOW","MEDIUM","HIGH","CRITICAL") else parsed["severity"]
     except:
