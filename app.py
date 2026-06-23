@@ -140,14 +140,14 @@ Write a specific 2-3 sentence ROOT CAUSE identifying:
 - Any pattern match from memory
 
 Respond with ONLY the root cause. No headers, no bullets."""
-    try:
-response = client.models.generate_content(
-    model="gemini-2.5-flash",
-    contents=prompt
-)
-return response.text.strip()
-    except Exception as e:
-        return f"Root cause analysis unavailable: {str(e)}"
+try:
+    response = client.models.generate_content(
+        ...
+    )
+    return response.text.strip()
+
+except Exception as e:
+    return f"Root cause analysis unavailable: {str(e)}"
 
 # ── Tool 3: Gemini Recommendations ───────────────────────────────────────────
 def tool_recommendations(parsed: dict, root_cause: str, escalated: bool) -> list:
