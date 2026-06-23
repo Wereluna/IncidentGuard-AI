@@ -6,15 +6,14 @@ import threading
 import time
 from datetime import datetime
 from flask import Flask, render_template, request, jsonify
-import google.generativeai as genai
+from google import genai
+from google.genai import types
+
 
 app = Flask(__name__)
 app.jinja_env.globals.update(enumerate=enumerate)
 
-# ── Gemini setup ──────────────────────────────────────────────────────────────
-genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
-model = genai.GenerativeModel("gemini-2.0-flash-exp")
-
+client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 # ── SQLite memory ─────────────────────────────────────────────────────────────
 def init_db():
     conn = sqlite3.connect("incidents.db")
@@ -142,8 +141,11 @@ Write a specific 2-3 sentence ROOT CAUSE identifying:
 
 Respond with ONLY the root cause. No headers, no bullets."""
     try:
-        response = model.generate_content(prompt)
-        return response.text.strip()
+response = client.models.generate_content(
+    model="gemini-2.5-flash",
+    contents=prompt
+)
+return response.text.strip()
     except Exception as e:
         return f"Root cause analysis unavailable: {str(e)}"
 
